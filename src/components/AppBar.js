@@ -98,15 +98,16 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <MenuItem onClick={handleCloseNavMenu}>
+            	<Link to="/">
+                <Typography textAlign="center">Home</Typography>
+            	</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseNavMenu}>
+            	<Link to="/admin">
+                <Typography textAlign="center">Admin</Typography>
+            	</Link>
+            </MenuItem>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

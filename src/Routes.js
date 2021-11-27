@@ -15,8 +15,8 @@ export default function AppRoutes() {
     <Router>
     	<AppBar />
       <Routes>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/admin" exact element={<Admin />} />
+        <Route path="/" exact element={<Home />} />
       </Routes>
     </Router>
   );
