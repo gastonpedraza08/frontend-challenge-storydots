@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchWithoutToken } from 'helpers/fetch';
-import { productsLoadAllproducts } from 'actions/ui';
+import { productsLoadAllproducts } from 'actions/products';
 
 export default function Home() {
 
 	const dispatch = useDispatch();
 	const { products } = useSelector(state => state.products);
 
-	useEffect(async () => {
+	useEffect(() => {
 		dispatch(productsLoadAllproducts());
 	}, [dispatch]);
 
