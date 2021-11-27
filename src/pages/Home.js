@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { productsLoadAllproducts } from 'actions/products';
 
+import ProductsSection from 'components/ProductsSection';
+import ScrollHelper from 'components/shared/ScrollHelper';
+
 export default function Home() {
 
 	const dispatch = useDispatch();
@@ -12,11 +15,21 @@ export default function Home() {
 		dispatch(productsLoadAllproducts());
 	}, [dispatch]);
 
-	console.log(products)
-
 	return (
 		<div>
-			Home
+			<ProductsSection />
+			<ScrollHelper 
+				beforeOnScreen={100}
+				onScreen={myFunc}
+				timeDebounce={400}
+			/>
+			<div style={{height: 1000}}>
+				Mas contenido
+			</div>
 		</div>
 	);
+}
+
+function myFunc() {
+	console.log("holaaa")
 }
