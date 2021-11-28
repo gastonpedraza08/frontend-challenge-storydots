@@ -13,19 +13,20 @@ const Item = styled(Paper)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  maxWidth: '400px',
 }));
 
 export default function ProductsSection() {
 	const { products } = useSelector(state => state.products);
   return (
-    <Box sx={{ width: 500 }}>
-      <Masonry columns={4} spacing={1}>
+    <div>
+      <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }} style={{alignContent: 'center'}} spacing={1}>
         {products.map(product => (
           <Item key={product.id} sx={{ height: 'auto' }}>
           	<Product product={product} />
           </Item>
         ))}
       </Masonry>
-    </Box>
+    </div>
   );
 }

@@ -18,11 +18,24 @@ export default function Product({product}) {
 				height: '200px',
 			}}>
 			</div>
-			<div>
-				{product.name}
-			</div>
-			<div>
-				{product.price}
+			<div
+				style={{
+					padding: '10px 10px',
+					wordBreak: 'break-all'
+				}}
+			>
+				<div>
+					{product.name}
+				</div>
+				<div
+					style={{
+						color: 'black',
+						fontSize: '16px',
+						marginTop: '10px',
+					}}
+				>
+					$ {product.price}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Box from '@mui/material/Box';
+
 import { productsLoadAllproducts, clearAllProducts } from 'actions/products';
 
 import ProductsSection from 'components/ProductsSection';
@@ -24,7 +26,20 @@ export default function Home() {
 	}, [dispatch]);
 
 	return (
-		<div>
+		<Box
+			sx={{
+    		width: {
+		      xs: '90vw',
+		      sm: '85vw',
+		      md: '80vw',
+		      lg: '75vw',
+		      xl: '70vw',
+		    },
+		    marginLeft: 'auto',
+		    marginRight: 'auto',
+		    marginTop: '40px'
+		  }}
+		>
 			<ProductsSection />
 			<ScrollHelper 
 				beforeOnScreen={100}
@@ -39,6 +54,6 @@ export default function Home() {
 			<div style={{height: 1000}}>
 				Mas contenido
 			</div>
-		</div>
+		</Box>
 	);
 }
