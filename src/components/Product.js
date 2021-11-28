@@ -1,12 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 export default function Product({product}) {
+
+	const navigate = useNavigate();
+
 	return (
 		<div
+			onClick={() => {
+				navigate('/product/' + product.id);
+			}}
 			style={{
 				width: '100%',
-				minHeight: 'auto'
+				minHeight: 'auto',
+				cursor: 'pointer'
 			}}
 		>
 			<div style={{
