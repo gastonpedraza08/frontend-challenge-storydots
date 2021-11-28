@@ -9,9 +9,10 @@ import Swal from 'sweetalert2';
 
 export const productsLoadAllproducts = () => {
 	return async (dispatch, currentState) => {
-		const { limit, order, page } = currentState().products.params;
+		const { params, products } = currentState().products;
+		const { limit, order } = params;
 		dispatch(uiStartLoadingAllProducts());
-		let endpoint = `products?limit=${limit}&order=${order}&page=${page}`;
+		let endpoint = `products?limit=${limit}&order=${order}&offset=${products.length}`;
 		const result = await fetchWithoutToken(endpoint, 'GET');
 		if (!result.error) {
 			dispatch({
@@ -26,3 +27,7 @@ export const productsLoadAllproducts = () => {
 		}
 	};
 };
+
+export const clearAllProducts = () => ({
+	type: types.productsClearAllproducts	
+})

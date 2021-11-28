@@ -5,7 +5,6 @@ const initialState = {
 	params: {
 		limit: 12,
 		order: 'DESC',
-		page: 1
 	}
 };
 
@@ -14,8 +13,10 @@ export const productsReducer = (state = initialState, action) => {
 		case types.productsLoadAllproducts:
 			return {
 				...state,
-				products: action.payload.products,
+				products: state.products.concat(action.payload.products),
 			};
+		case types.productsClearAllproducts:
+			return initialState;
 		default:
 			return state;
 	}

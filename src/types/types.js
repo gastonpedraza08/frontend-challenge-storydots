@@ -3,4 +3,5 @@ export const types = {
   uiStopLoadingAllProducts: '[ui] Stop Loading AllProducts',
 
   productsLoadAllproducts: '[products] Load All Products',
+  productsClearAllproducts: '[products] Clear All Products',
 };
