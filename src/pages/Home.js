@@ -18,7 +18,9 @@ export default function Home() {
 	console.log(products)
 
 	useEffect(() => {
-		dispatch(productsLoadAllproducts());
+		if (products.length===0) {
+			dispatch(productsLoadAllproducts());
+		}
 	}, [dispatch]);
 
 	return (
