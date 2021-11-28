@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Box from '@mui/material/Box';
 
-import { productsLoadAllproducts, clearAllProducts } from 'actions/products';
+import { productsLoadAllproducts } from 'actions/products';
 
 import ProductsSection from 'components/ProductsSection';
 import ScrollHelper from 'components/shared/ScrollHelper';
@@ -12,12 +12,16 @@ export default function Home() {
 
 	const dispatch = useDispatch();
 	const { products } = useSelector(state => state.products);
+	const { uiLoadingAllProducts: { isLoading } } = useSelector(state => state.ui);
 
-	const myFunc = useCallback(function myFunc() {
-		console.log("deben cargarse mas productos")
-	}, []);
-
-	console.log(products)
+	const myFunc = useCallback(() => {
+			console.log("debe cargar mas")
+			console.log(isLoading)
+			console.log(products.length)
+		if (!isLoading) {
+			dispatch(productsLoadAllproducts());
+		}
+	}, [isLoading]);
 
 	useEffect(() => {
 		if (products.length===0) {
@@ -44,7 +48,7 @@ export default function Home() {
 			<ScrollHelper 
 				beforeOnScreen={100}
 				onScreen={myFunc}
-				timeDebounce={400}
+				timeDebounce={300}
 			/>
 			<button 
 				onClick={() => {

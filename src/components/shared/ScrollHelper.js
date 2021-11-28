@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 import debounce from 'helpers/debounce';
 
 export default function ScrollHelper(props) {
 	const { beforeOnScreen, onScreen, timeDebounce } = props;
+	const { uiLoadingAllProducts: { isLoading } } = useSelector(state => state.ui);
 	const ref = useRef(null);
 
-	const debounceScroll = useCallback(debounce(function() {
-		if (window.innerHeight - ref.current.getBoundingClientRect().top + beforeOnScreen > 0) {
-			onScreen();
-	  }
-	}, timeDebounce), [onScreen]);
+	const debounceScroll	=	debounce(function() {
+			if (window.innerHeight - ref.current.getBoundingClientRect().top + beforeOnScreen > 0) {
+				onScreen();
+		  }
+		}, timeDebounce);
 
 	useEffect(() => {
 
@@ -18,7 +20,7 @@ export default function ScrollHelper(props) {
   	return () => {
   		window.removeEventListener('scroll', debounceScroll);
   	}
-	}, []);
+	}, [debounceScroll]);
 
 
 	return (
