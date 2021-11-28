@@ -9,9 +9,13 @@ export default function ScrollHelper(props) {
 	const ref = useRef(null);
 
 	const debounceScroll	=	debounce(function() {
+		try {
 			if (window.innerHeight - ref.current.getBoundingClientRect().top + beforeOnScreen > 0) {
 				onScreen();
 		  }
+		} catch (e) {
+			console.log(e);
+		}
 		}, timeDebounce);
 
 	useEffect(() => {
