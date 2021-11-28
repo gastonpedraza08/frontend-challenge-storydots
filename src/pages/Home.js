@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { productsLoadAllproducts } from 'actions/products';
@@ -10,6 +10,10 @@ export default function Home() {
 
 	const dispatch = useDispatch();
 	const { products } = useSelector(state => state.products);
+
+	const myFunc = useCallback(function myFunc() {
+		console.log("esta en pantalla antes")
+	}, []);
 
 	useEffect(() => {
 		dispatch(productsLoadAllproducts());
@@ -28,8 +32,4 @@ export default function Home() {
 			</div>
 		</div>
 	);
-}
-
-function myFunc() {
-	console.log("holaaa")
 }

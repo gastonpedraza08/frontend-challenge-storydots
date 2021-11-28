@@ -8,10 +8,7 @@ export default function ScrollHelper(props) {
 
 	const debounceScroll = useCallback(debounce(function() {
 		if (window.innerHeight - ref.current.getBoundingClientRect().top + beforeOnScreen > 0) {
-			console.log("ejecuta after debounce")
 			onScreen();
-	  } else {
-	  	console.log("no esta en pantalla")
 	  }
 	}, timeDebounce), [onScreen]);
 
