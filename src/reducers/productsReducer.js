@@ -2,6 +2,10 @@ import { types } from 'types/types';
 
 const initialState = {
 	products: [],
+	productsAdmin: {
+		products: [],
+		count: 0
+	},
 	params: {
 		limit: 12,
 		order: 'DESC',
@@ -17,6 +21,14 @@ export const productsReducer = (state = initialState, action) => {
 			};
 		case types.productsClearAllproducts:
 			return initialState;
+		case types.productsLoadProductsAdmin:
+			return {
+				...state,
+				productsAdmin: {
+					products: action.payload.productsAdmin,
+					count: action.payload.count
+				},
+			};
 		default:
 			return state;
 	}

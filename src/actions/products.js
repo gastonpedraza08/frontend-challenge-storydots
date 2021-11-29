@@ -3,6 +3,8 @@ import { fetchWithoutToken } from 'helpers/fetch';
 import {
 	uiStartLoadingAllProducts,
 	uiStopLoadingAllProducts,
+	uiStartLoadingAllProductsAdmin,
+	uiStopLoadingAllProductsAdmin,
 } from 'actions/ui';
 import Swal from 'sweetalert2';
 
@@ -31,3 +33,24 @@ export const productsLoadAllproducts = () => {
 export const clearAllProducts = () => ({
 	type: types.productsClearAllproducts	
 })
+
+
+export const productsLoadProductsAdmin = (page, pageSize) => {
+	return async (dispatch) => {
+		let nPage = Number(page) + 1;
+		dispatch(uiStartLoadingAllProductsAdmin());
+		const result = await fetchWithoutToken(`products?page=${nPage}&limit=${pageSize}`);
+		if (!result.error) {
+			dispatch({
+				type: types.productsLoadProductsAdmin,
+				payload: {
+					productsAdmin: result.data.products,
+					count: result.data.count
+				},
+			});
+			dispatch(uiStopLoadingAllProductsAdmin());
+		} else {
+			dispatch(uiStopLoadingAllProductsAdmin(result.error));
+		}
+	}
+}

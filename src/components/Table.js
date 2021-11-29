@@ -1,34 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 
+import { productsLoadProductsAdmin } from 'actions/products';
 import { fetchWithoutToken } from 'helpers/fetch';
 
-const loadServerRows = async (page, pageSize) => {
-	let nPage = Number(page) + 1;
-	try {
-		const result = await fetchWithoutToken(`products?page=${nPage}&limit=${pageSize}`);
-	  return {
-	  	products: result.data.products,
-	  	count: result.data.count
-	  };
-	} catch (e) {
-		console.log(e)
-		return {
-			products: [],
-			count: 0
-		}
-	}
-}
-
 function MyCustomButton(props) {
+	const dispatch = useDispatch();
 	const { id } = props;
 	return (
 		<span 
 			onClick={(e) => {
 				e.stopPropagation();
-				console.log(id)
+				//dispatch(productsDeleteProduct(id));
 			}}
 			style={{
 				color: 'red',
@@ -104,12 +90,13 @@ const data = {
 	    }
 	  },
 	],
-	rows: [
-	]
-
 }
 
 export default function ServerPaginationGrid() {
+
+	const dispatch = useDispatch();
+	const { productsAdmin: { products, count }} = useSelector(state => state.products);
+	const { uiLoadingAllProductsAdmin: { isLoading }} = useSelector(state => state.ui);
 
   const [pageSize, setPageSize] = useState(() => {
   	let pgSize = localStorage.getItem('pageSize');
@@ -136,36 +123,15 @@ export default function ServerPaginationGrid() {
   		console.log(e);
   	}
   });
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [rowCount, setRowCount] = useState(0);
-
 
   useEffect(() => {
-    let active = true;
-
-    (async () => {
-      setLoading(true);
-      const { products, count } = await loadServerRows(page, pageSize);
-
-      if (!active) {
-        return;
-      }
-
-      setRows(products);
-      setRowCount(count);
-      setLoading(false);
-    })();
-
-    return () => {
-      active = false;
-    };
+    dispatch(productsLoadProductsAdmin(page, pageSize));
   }, [page, data, pageSize]);
 
   return (
     <div style={{ height: 'calc(100vh - 64px)', width: '100%' }}>
       <DataGrid
-        rows={rows}
+        rows={products}
         columns={data.columns}
         pagination
         pageSize={pageSize}
@@ -174,18 +140,15 @@ export default function ServerPaginationGrid() {
         	setPageSize(newPageSize);
         }}
         rowsPerPageOptions={[5, 10, 15, 20, 50, 100]}
-        rowCount={rowCount}
+        rowCount={count}
         page={page}
         paginationMode="server"
         onPageChange={(newPage) => {
         	localStorage.setItem('page', newPage);
         	setPage(newPage);
         }}
-        loading={loading}
+        loading={isLoading}
       />
-      <div>
-      	
-      </div>
     </div>
   );
 }

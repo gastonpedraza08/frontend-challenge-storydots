@@ -5,6 +5,10 @@ const initialState = {
 		isLoading: true,
 		error: false,
 	},
+	uiLoadingAllProductsAdmin: {
+		isLoading: true,
+		error: false,
+	},
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -21,6 +25,23 @@ export const uiReducer = (state = initialState, action) => {
 			return {
 				...state,
 				uiLoadingAllProducts: {
+					isLoading: false,
+					error: action.payload
+				}
+			};
+		case types.uiStartLoadingAllProductsAdmin:
+			return {
+				...state,
+				uiLoadingAllProductsAdmin: {
+					isLoading: true,
+					error: null
+				}
+			};
+		case types.uiStopLoadingAllProductsAdmin:
+		console.log("si se ejecuta")
+			return {
+				...state,
+				uiLoadingAllProductsAdmin: {
 					isLoading: false,
 					error: action.payload
 				}
