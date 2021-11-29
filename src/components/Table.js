@@ -84,7 +84,7 @@ const data = {
 	      	<div>
 	      		<Link 
 	      			to={`/admin/edit/product/${params.row.id}`}
-	      			target="_blank"
+	      			
 	      			style={{
 	      				textDecoration: 'none',
 	      				color: 'blue'
@@ -111,8 +111,31 @@ const data = {
 
 export default function ServerPaginationGrid() {
 
-  const [pageSize, setPageSize] = useState(5);
-  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(() => {
+  	let pgSize = localStorage.getItem('pageSize');
+  	try {
+	  	if (pgSize) {
+	  		return Number(pgSize);
+	  	} else {
+	  		return 10;
+	  	}
+  	} catch (e) {
+  		console.log(e);
+  	}
+  });
+  const [page, setPage] = useState(() => {
+  	let pg = localStorage.getItem('page');
+
+  	try {
+	  	if (pg) {
+	  		return Number(pg);
+	  	} else {
+	  		return 0;
+	  	}
+  	} catch (e) {
+  		console.log(e);
+  	}
+  });
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
   const [rowCount, setRowCount] = useState(0);
@@ -146,11 +169,18 @@ export default function ServerPaginationGrid() {
         columns={data.columns}
         pagination
         pageSize={pageSize}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        onPageSizeChange={(newPageSize) => {
+        	localStorage.setItem('pageSize', newPageSize);
+        	setPageSize(newPageSize);
+        }}
         rowsPerPageOptions={[5, 10, 15, 20, 50, 100]}
         rowCount={rowCount}
+        page={page}
         paginationMode="server"
-        onPageChange={(newPage) => setPage(newPage)}
+        onPageChange={(newPage) => {
+        	localStorage.setItem('page', newPage);
+        	setPage(newPage);
+        }}
         loading={loading}
       />
       <div>
