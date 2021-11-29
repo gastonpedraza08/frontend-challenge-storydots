@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import Table from 'components/Table';
+
 export default function Admin() {
 
 	const navigate = useNavigate();
@@ -35,8 +37,8 @@ export default function Admin() {
 	}
 
 	return (
-		<div style={{height:1500}}>
-			Admin
+		<div>
+			<Table />
 		</div>
 	);
 }
