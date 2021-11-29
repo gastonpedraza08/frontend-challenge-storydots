@@ -1,13 +1,22 @@
 import { types } from 'types/types';
 
-const initialState = {
-	user: {
-		email: ''
-	},
-	isLoggedIn: false
+const initialState = () => {
+	let userLS = JSON.parse(localStorage.getItem('user'));
+	let user = null;
+	let isLoggedIn = false;
+
+	if (userLS!=='null') {
+		user = userLS;
+		isLoggedIn = true;
+	}
+	
+	return {
+		user,
+		isLoggedIn
+	}
 };
 
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState(), action) => {
 	switch (action.type) {
 		case types.userLogin:
 			return {
