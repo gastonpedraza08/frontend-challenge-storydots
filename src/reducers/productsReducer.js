@@ -29,6 +29,14 @@ export const productsReducer = (state = initialState, action) => {
 					count: action.payload.count
 				},
 			};
+		case types.productsDeleteProductAdmin:
+			return {
+				...state,
+				productsAdmin: {
+					...state.productsAdmin,
+					products: state.productsAdmin.products.filter(pro => pro.id!==action.payload.id),
+				},
+			};
 		default:
 			return state;
 	}

@@ -54,3 +54,34 @@ export const productsLoadProductsAdmin = (page, pageSize) => {
 		}
 	}
 }
+
+export const productsDeleteProduct = (id) => {
+  return async (dispatch) => {
+    Swal.fire({
+      title: "¿Seguro que quieres eliminar este producto?",
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      showLoaderOnConfirm: true,
+      preConfirm: async () => {
+        Swal.getCancelButton().style.display = "none";
+        const result = await fetchWithoutToken(`products/${id}`, {}, "DELETE");
+        if (!result.error) {
+          dispatch({
+            type: types.productsDeleteProductAdmin,
+            payload: {
+              id,
+            },
+          });
+          Swal.fire("Correcto!", "Producto eliminado correctamente", "success");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "No se pudo eliminar el producto",
+            text: result.error,
+          });
+        }
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    });
+  };
+};

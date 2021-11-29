@@ -7,6 +7,7 @@ export const types = {
   productsLoadAllproducts: '[products] Load All Products',
   productsClearAllproducts: '[products] Clear All Products',
   productsLoadProductsAdmin: '[products] Load Products Admin',
+  productsDeleteProductAdmin: '[products] Delete Product Admin Admin',
 
 	userLogin: '[user] Login',
 	userLogout: '[user] Logout',

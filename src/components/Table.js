@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 
-import { productsLoadProductsAdmin } from 'actions/products';
+import { productsLoadProductsAdmin, productsDeleteProduct } from 'actions/products';
 import { fetchWithoutToken } from 'helpers/fetch';
 
 function MyCustomButton(props) {
@@ -14,7 +14,7 @@ function MyCustomButton(props) {
 		<span 
 			onClick={(e) => {
 				e.stopPropagation();
-				//dispatch(productsDeleteProduct(id));
+				dispatch(productsDeleteProduct(id));
 			}}
 			style={{
 				color: 'red',
