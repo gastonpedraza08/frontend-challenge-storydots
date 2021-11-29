@@ -10,7 +10,7 @@ export const userLogin = ({ email, password }, navigate) => {
 				email,
 			}
 			localStorage.setItem('user', JSON.stringify(user));
-			navigate(localStorage.getItem('lastLocation'));
+			navigate(localStorage.getItem('lastLocation') || '/');
 			dispatch({
 				type: types.userLogin,
 				payload: {

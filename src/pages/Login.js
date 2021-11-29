@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
@@ -16,6 +16,13 @@ export default function LoginScreen() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('testuser@gmail.com');
 	const [password, setPassword] = useState('1234');
+
+	useEffect(() => {
+		const user = JSON.parse(localStorage.getItem('user'));
+		if (user) {
+			navigate('/');
+		}
+	}, [])
 
 	const handleSubmit = () => {
 		dispatch(userLogin({ email, password }, navigate));

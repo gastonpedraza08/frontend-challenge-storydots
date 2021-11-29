@@ -4,12 +4,11 @@ const initialState = () => {
 	let userLS = JSON.parse(localStorage.getItem('user'));
 	let user = null;
 	let isLoggedIn = false;
-
-	if (userLS!=='null') {
+	if (userLS!==null) {
 		user = userLS;
 		isLoggedIn = true;
 	}
-	
+
 	return {
 		user,
 		isLoggedIn

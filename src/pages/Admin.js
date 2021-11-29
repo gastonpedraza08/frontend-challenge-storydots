@@ -9,8 +9,8 @@ export default function Admin() {
 
 
 	useEffect(() => {
-		const user = JSON.stringify(localStorage.getItem('user'));
-		if (!user || user==='null') {
+		const user = JSON.parse(localStorage.getItem('user'));
+		if (!user) {
 			localStorage.setItem('lastLocation', location.pathname);
 			navigate('/login');
 		} else {
