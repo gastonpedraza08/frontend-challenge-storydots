@@ -6,11 +6,19 @@ import { fetchWithoutToken } from 'helpers/fetch';
 
 const loadServerRows = async (page, pageSize) => {
 	let nPage = Number(page) + 1;
-	const result = await fetchWithoutToken(`products?page=${nPage}&limit=${pageSize}`);
-  return {
-  	products: result.data.products,
-  	count: result.data.count
-  };
+	try {
+		const result = await fetchWithoutToken(`products?page=${nPage}&limit=${pageSize}`);
+	  return {
+	  	products: result.data.products,
+	  	count: result.data.count
+	  };
+	} catch (e) {
+		console.log(e)
+		return {
+			products: [],
+			count: 0
+		}
+	}
 }
 
 const data = {
