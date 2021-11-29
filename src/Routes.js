@@ -7,6 +7,7 @@ import {
 
 import Home from './pages/Home';
 import Admin from './pages/Admin';
+import EditProduct from './pages/EditProduct';
 import Product from './pages/Product';
 import Login from './pages/Login';
 
@@ -18,6 +19,7 @@ export default function AppRoutes() {
     	<AppBar />
       <Routes>
         <Route path="/admin" exact element={<Admin />} />
+        <Route path="/admin/edit/product/:productId" exact element={<EditProduct />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/product/:productId" exact element={<Product />} />
         <Route path="/" exact element={<Home />} />

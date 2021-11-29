@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
 
@@ -19,6 +20,25 @@ const loadServerRows = async (page, pageSize) => {
 			count: 0
 		}
 	}
+}
+
+function MyCustomButton(props) {
+	const { id } = props;
+	return (
+		<span 
+			onClick={(e) => {
+				e.stopPropagation();
+				console.log(id)
+			}}
+			style={{
+				color: 'red',
+				cursor: 'pointer',
+				margin: '0px 7px'
+			}}
+		>
+			Eliminar
+		</span>
+	);
 }
 
 const data = {
@@ -53,6 +73,36 @@ const data = {
 			headerName: 'Id Marca',
 			width: 120
 		},
+		/*custom cell*/
+		{
+	    field: "edit",
+	    headerName: "Acciones",
+	    width: 150,
+	    sortable: false,
+	    renderCell: (params) => {
+	      return (
+	      	<div>
+	      		<Link 
+	      			to={`/admin/edit/product/${params.row.id}`}
+	      			target="_blank"
+	      			style={{
+	      				textDecoration: 'none',
+	      				color: 'blue'
+	      			}}
+	      		>Editar</Link>
+	      		<MyCustomButton id={params.row.id} />
+	      		<Link 
+	      			to={`/product/${params.row.id}`}
+	      			target="_blank"
+	      			style={{
+	      				textDecoration: 'none',
+	      				color: 'green'
+	      			}}
+	      		>Ver</Link>
+	      	</div>
+	      );
+	    }
+	  },
 	],
 	rows: [
 	]
@@ -61,14 +111,14 @@ const data = {
 
 export default function ServerPaginationGrid() {
 
-  const [pageSize, setPageSize] = React.useState(5);
-  const [page, setPage] = React.useState(0);
-  const [rows, setRows] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [rowCount, setRowCount] = React.useState(0);
+  const [pageSize, setPageSize] = useState(5);
+  const [page, setPage] = useState(0);
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [rowCount, setRowCount] = useState(0);
 
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
     (async () => {
