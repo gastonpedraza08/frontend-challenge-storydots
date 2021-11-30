@@ -68,14 +68,14 @@ const data = {
 	    renderCell: (params) => {
 	      return (
 	      	<div>
-	      		<Link 
+	      		{/*<Link 
 	      			to={`/admin/edit/product/${params.row.id}`}
 	      			
 	      			style={{
 	      				textDecoration: 'none',
 	      				color: 'blue'
 	      			}}
-	      		>Editar</Link>
+	      		>Editar</Link>*/}
 	      		<MyCustomButton id={params.row.id} />
 	      		<Link 
 	      			to={`/product/${params.row.id}`}
