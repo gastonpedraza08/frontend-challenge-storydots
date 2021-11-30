@@ -27,6 +27,7 @@ export const fetchWithoutToken = async (endpoint, data, method = 'GET') => {
       return result;
     }
   } catch (error) {
+  	console.log(error);
     if (error.response) {
       return {
         error: error.response.data.error
