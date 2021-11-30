@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/gastonpedraza08/frontend-challenge-storydots/blob/master/screen.jpg)
+[![Product Name Screen Shot][product-screenshot]](https://raw.githubusercontent.com/gastonpedraza08/frontend-challenge-storydots/master/screen.jpg)
 
 Este proyecto es parte del Coding Challenge Full Fullstack Developer de StoryDots!
 La consigna se trataba de crear un simple ecommerce que permitiera visualizar los productos y además administrarlos desde un panel de administración.
