@@ -63,7 +63,7 @@ La consigna se trataba de crear un simple ecommerce que permitiera visualizar lo
 
 ### Built With
 
-Estas son las tecnologías con las cuales decidi construir el frontend.
+Estas son las tecnologías con las cuales decidí construir el frontend.
 
 * [React.js](https://reactjs.org/)
 * [@mui/material](https://mui.com/)
@@ -120,14 +120,14 @@ Estos son los pasos que debes seguir para correr la aplicación local.
 - [x] Listado de productos con scroll infinito
 - [x] Vista de un producto
 - [x] Panel de administración
-    - [x] Valdiar usuario logeado
+    - [x] Validar usuario logeado
     - [x] Listar productos
     - [x] Crear producto
     - [x] Eliminar producto
     - [ ] Editar producto
     - [ ] Validar formulario creación de producto
     - [ ] Animación al cargar una imagen
-- [ ] Multiple imágenes estilo carousel cuando se ven los detalles de un producto
+- [ ] Multiples imágenes estilo carousel cuando se ven los detalles de un producto
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
