@@ -147,7 +147,8 @@ Distributed under the MIT License.
 Gastón Pedraza - [Linkedin](https://www.linkedin.com/in/gaston-pedraza) - gastonpedraza.developer@gmail.com
 
 Project Links: 
-[frontend](https://github.com/gastonpedraza08/frontend-challenge-storydots)
-[backend](https://github.com/gastonpedraza08/backend-challenge-storydots)
+* [frontend](https://github.com/gastonpedraza08/frontend-challenge-storydots)
+* [backend](https://github.com/gastonpedraza08/backend-challenge-storydots)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
