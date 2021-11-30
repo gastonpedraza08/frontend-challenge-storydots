@@ -79,7 +79,6 @@ const data = {
 	      		<MyCustomButton id={params.row.id} />
 	      		<Link 
 	      			to={`/product/${params.row.id}`}
-	      			target="_blank"
 	      			style={{
 	      				textDecoration: 'none',
 	      				color: 'green'
