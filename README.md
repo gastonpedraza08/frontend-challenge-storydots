@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://storydots.app/">
+    <img src="https://storydots.app/static/media/storydots-logo.9bbcdeaa.svg" alt="Logo" width="80" height="80">
+  </a>
 
-## Available Scripts
+  <h3 align="center">StoryDots Challenge</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Frontend de mi solución para el Coding Challenge Full Stack Developer de StoryDots!
+    <br />
+    <a href="https://github.com/gastonpedraza08/backend-challenge-storydots"><strong>Ir al backend »</strong></a>
+    <br />
+    <br />
+    <a href="https://flamboyant-hoover-a11ae3.netlify.app/">Live Demo</a>
+    <!-- ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
+  </p>
+</div>
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[![Product Name Screen Shot][product-screenshot]](screen.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Este proyecto es parte del Coding Challenge Full Fullstack Developer de StoryDots!
+La consigna se trataba de crear un simple ecommerce que permitiera visualizar los productos y además administrarlos desde un panel de administración.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Estas son las tecnologías con las cuales decidi construir el frontend.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* [React.js](https://reactjs.org/)
+* [@mui/material](https://mui.com/)
+* [axios](https://github.com/axios/axios)
+* [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+* [redux](https://es.redux.js.org/)
+* [sweetalert2](https://sweetalert2.github.io/)
+* [ckeditor](https://ckeditor.com/)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<!-- GETTING STARTED -->
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Para correr este proyecto es necesario crear un archivo .env en el directorio raíz y pegar el contenido que esta dentro de .env.example.
 
-### Analyzing the Bundle Size
+NOTA: cambiar el valor de la variable NODE_ENV por production (NODE_ENV=production) para poder probar la api desplegada en heroku. Si lo que quieres es probar la aplicación completa de manera local (frontend y backend) tienes que correr primero el backend que se encuentra en este [repositorio](https://github.com/gastonpedraza08/backend-challenge-storydots).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation
 
-### Making a Progressive Web App
+Estos son los pasos que debes seguir para correr la aplicación local.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clona el repositorio
+   ```sh
+   git clone https://github.com/gastonpedraza08/frontend-challenge-storydots.git
+   ```
+2. Mover a la carpeta
+   ```sh
+   cd frontend-challenge-storydots
+   ```
+3. Instala las dependencias
+   ```sh
+   yarn
+   ```
+4. Crea un archivo `.env` en el directorio principal y añade el siguiente contenido.
+   ```js
+    REACT_APP_API_URL_DEV=http://localhost:5000/api
+	REACT_APP_API_URL=https://gastonpedraza-ecommerce.herokuapp.com/api
+	NODE_ENV=production
+   ```
+5. Corre la aplicación
+   ```sh
+   yarn start
+   ```
 
-### Advanced Configuration
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<!-- ROADMAP -->
+## Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [x] Listado de productos con scroll infinito
+- [x] Vista de un producto
+- [x] Panel de administración
+    - [x] Valdiar usuario logeado
+    - [x] Listar productos
+    - [x] Crear producto
+    - [x] Eliminar producto
+    - [ ] Editar producto
+    - [ ] Validar formulario creación de producto
+    - [ ] Animación al cargar una imagen
+- [ ] Multiple imágenes estilo carousel cuando se ven los detalles de un producto
 
-### `yarn build` fails to minify
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Gastón Pedraza - [Linkedin](https://www.linkedin.com/in/gaston-pedraza) - gastonpedraza.developer@gmail.com
+
+Project Link: [https://github.com/gastonpedraza08/frontend-challenge-storydots](https://github.com/gastonpedraza08/frontend-challenge-storydots)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
