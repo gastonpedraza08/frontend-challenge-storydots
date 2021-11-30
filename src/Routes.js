@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import EditProduct from './pages/EditProduct';
+import AddProduct from './pages/AddProduct';
 import Product from './pages/Product';
 import Login from './pages/Login';
 
@@ -20,6 +21,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/admin" exact element={<Admin />} />
         <Route path="/admin/edit/product/:productId" exact element={<EditProduct />} />
+        <Route path="/admin/add/product" exact element={<AddProduct />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/product/:productId" exact element={<Product />} />
         <Route path="/" exact element={<Home />} />

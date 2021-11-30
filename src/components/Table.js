@@ -129,7 +129,7 @@ export default function ServerPaginationGrid() {
   }, [page, data, pageSize]);
 
   return (
-    <div style={{ height: 'calc(100vh - 64px)', width: '100%' }}>
+    <div style={{ height: 'calc(100vh - 125px)', width: '100%' }}>
       <DataGrid
         rows={products}
         columns={data.columns}

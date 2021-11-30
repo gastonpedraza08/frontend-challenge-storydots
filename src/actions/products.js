@@ -85,3 +85,29 @@ export const productsDeleteProduct = (id) => {
     });
   };
 };
+
+
+export const productsCreateProduct = (data, cleanForm) => {
+  return async (dispatch) => {
+    Swal.fire({
+      title: "Cargando",
+      text: "Guardando Producto",
+      didOpen: async () => {
+        Swal.showLoading();
+      	const result = await fetchWithoutToken('products', data, 'POST');
+        if (!result.error) {
+          Swal.fire("Correcto!", "Producto creado correctamente", "success");
+          console.log(result.data)
+          cleanForm();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "No se pudo crear el producto",
+            text: result.error,
+          });
+        }
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    });
+	};
+}
