@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { productsLoadAllproducts } from 'actions/products';
 
@@ -50,14 +51,24 @@ export default function Home() {
 				onScreen={myFunc}
 				timeDebounce={300}
 			/>
-			<button 
-				onClick={() => {
-					dispatch(productsLoadAllproducts());
-				}}
-			>Cargar Mas</button>
-			<div style={{height: 1000}}>
-				Mas contenido
-			</div>
+			{
+				isLoading ?
+				(
+					<div
+						style={{
+							width: '100%',
+							display: 'flex',
+							justifyContent: 'center',
+							marginTop: 20
+						}}
+					>
+						<CircularProgress />
+					</div>
+				)
+				:
+				(null)
+			}
+			<div style={{height: 50}}></div>
 		</Box>
 	);
 }
